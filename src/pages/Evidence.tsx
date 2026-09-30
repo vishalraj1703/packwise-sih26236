@@ -1,3 +1,4 @@
+import { foodImage, ALL_CREDITS } from "../lib/images";
 import { useEffect, useState } from "react";
 import { COMMODITIES } from "../../shared/data/commodities";
 import { MATERIALS, STRUCTURES } from "../../shared/data/materials";
@@ -120,7 +121,7 @@ export default function Evidence() {
               const rv = latest("commodity", c.id);
               return (
                 <tr key={c.id}>
-                  <td className="font-semibold">{c.icon} {c.name}<div className="text-xs font-normal text-ink-3">{c.foodClass}</div></td>
+                  <td className="font-semibold">{foodImage(c.id) && <img src={foodImage(c.id)!} alt="" className="mr-2 inline h-8 w-8 rounded object-cover" />}{c.name}<div className="text-xs font-normal text-ink-3">{c.foodClass}</div></td>
                   <td className="text-xs">
                     {c.moisture && <div>Moisture {c.moisture.initialWb.lo}–{c.moisture.initialWb.hi}% → limit {c.moisture.criticalWb.value}% <SourceRef id={c.moisture.criticalWb.sourceId} />; isotherm b {c.moisture.isoB.lo}–{c.moisture.isoB.hi} <SourceRef id={c.moisture.isoB.sourceId} /></div>}
                     {c.oxygen && <div>O₂ tolerance {c.oxygen.tolerancePpm.lo}–{c.oxygen.tolerancePpm.hi} mg/kg <SourceRef id={c.oxygen.tolerancePpm.sourceId} /></div>}
@@ -163,6 +164,15 @@ export default function Evidence() {
             {s.note && <div className="text-xs text-ink-2">{s.note}</div>}
           </li>
         ))}</ul>
+      </Card>
+
+      <Card title="Photo credits">
+        <ul className="grid gap-1 text-xs text-ink-2 sm:grid-cols-2" id="photo-credits">
+          {ALL_CREDITS.map(([k, c]) => (
+            <li key={k}><strong>{k}</strong>: <a className="underline" href={c.source} target="_blank" rel="noreferrer">{c.title ?? c.file}</a> by {c.author} — <a className="underline" href={c.licenseUrl} target="_blank" rel="noreferrer">{c.license}</a></li>
+          ))}
+        </ul>
+        <p className="mt-2 text-xs text-ink-3">Photos from Wikimedia Commons, resized. They illustrate food types and visible pack formats only.</p>
       </Card>
 
       <Card title="Plain-language glossary">

@@ -679,11 +679,12 @@ function explain(c: Commodity, k: Candidate, t: TransportOption, profile: Exposu
 // -----------------------------------------------------------------------------
 // Order-level plans
 
-function combos<T>(lists: T[][], limit = 400): T[][] {
+/** Cartesian product in lexicographic order, capped at `limit` combinations. */
+function combos<T>(lists: T[][], limit = 3000): T[][] {
   let out: T[][] = [[]];
   for (const l of lists) {
     const next: T[][] = [];
-    for (const prefix of out) for (const x of l) { next.push([...prefix, x]); if (next.length >= limit) break; }
+    outer: for (const prefix of out) for (const x of l) { next.push([...prefix, x]); if (next.length >= limit) break outer; }
     out = next;
   }
   return out;

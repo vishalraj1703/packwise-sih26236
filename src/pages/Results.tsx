@@ -7,6 +7,7 @@ import { getCommodity } from "../../shared/data/commodities";
 import { EQUIPMENT } from "../../shared/engine/sealing";
 import { api, local } from "../lib/api";
 import { useAuth } from "../lib/auth";
+import { foodImage } from "../lib/images";
 import { useI18n } from "../lib/i18n";
 import { days, inr, inr2, kg, pct, sig, dateStr } from "../lib/format";
 import { Card, Disclosure, ErrorBox, Notice, SourceRef, Spinner, Stat, StatusBadge, SupportBadge, Tabs } from "../components/ui";
@@ -79,7 +80,7 @@ function ResultsView({ data, setData }: { data: Loaded; setData: (d: Loaded) => 
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <div className="text-xs font-semibold uppercase tracking-wide text-ink-3">Packaging-and-journey options</div>
-          <h1 className="h1">{c.icon} {r.commodity.name} · {j.origin.name.split(",")[0]} → {j.destination.name.split(",")[0]}</h1>
+          <h1 className="h1 flex items-center gap-3">{foodImage(c.id) && <img src={foodImage(c.id)!} alt="" className="h-12 w-12 rounded-xl object-cover" />}{r.commodity.name} · {j.origin.name.split(",")[0]} → {j.destination.name.split(",")[0]}</h1>
           <p className="muted">{r.input.portions.reduce((a, p) => a + p.kg, 0)} kg in {r.input.portions.length} portion(s) · departure {dateStr(j.departureDate)} · {j.distanceKm} km · {r.engineVersion} · {dateStr(r.createdAt)}</p>
         </div>
         <div className="no-print flex gap-2">

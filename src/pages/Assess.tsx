@@ -9,6 +9,7 @@ import { EQUIPMENT } from "../../shared/engine/sealing";
 import type { Evidenced, SealMethod } from "../../shared/types";
 import { api, local } from "../lib/api";
 import { useAuth } from "../lib/auth";
+import { foodImage } from "../lib/images";
 import { useI18n } from "../lib/i18n";
 import { PRESET_PLACES } from "../lib/places";
 import { Card, ErrorBox, Field, Notice, Spinner, StatusBadge } from "../components/ui";
@@ -194,7 +195,7 @@ function FoodStep({ d, up }: StepProps) {
           {list.map((x) => (
             <button key={x.id} onClick={() => up({ commodityId: x.id, state: x.defaultState, identification: { method: "user-select", confirmed: false } })}
               className={`rounded-xl border px-3 py-2 text-left ${d.commodityId === x.id ? "border-brand bg-brand-3" : "border-line bg-white hover:border-brand-2"}`}>
-              <div className="text-xl">{x.icon}</div>
+              {foodImage(x.id) && <img src={foodImage(x.id)!} alt="" className="mb-1 h-20 w-full rounded-lg object-cover" />}
               <div className="text-sm font-semibold">{x.name}</div>
               <div className="text-xs text-ink-3">{x.names.ta} · {x.foodClass}</div>
             </button>
@@ -226,7 +227,7 @@ function OrderStep({ d, up }: StepProps) {
   const setP = (i: number, p: Partial<Portion>) => up({ portions: d.portions.map((x, j) => (j === i ? { ...x, ...p } : x)) });
   const total = d.portions.reduce((a, p) => a + p.kg, 0);
   return (
-    <Card title={`${c.icon} ${c.name} — split the order by use and storage need`}>
+    <Card title={<span className="flex items-center gap-3">{foodImage(c.id) && <img src={foodImage(c.id)!} alt="" className="h-10 w-10 rounded-lg object-cover" />}{c.name} — split the order by use and storage need</span>}>
       <p className="muted mb-4">Different portions may need different packs. Example: bulk for immediate use, retail for two weeks, retail for five months.</p>
       <div className="space-y-3">
         {d.portions.map((p, i) => (
@@ -461,7 +462,7 @@ function ReviewStep({ d }: { d: Draft }) {
   return (
     <Card title="Review">
       <div className="grid gap-4 text-sm md:grid-cols-3">
-        <div><div className="label">Food</div>{c.icon} {c.name} — {d.state} <span className="text-xs text-ink-3">({d.identification.method === "photo-ai" ? "photo + confirmed" : "selected"})</span></div>
+        <div><div className="label">Food</div>{foodImage(c.id) && <img src={foodImage(c.id)!} alt="" className="mb-1 h-16 w-16 rounded-lg object-cover" />} {c.name} — {d.state} <span className="text-xs text-ink-3">({d.identification.method === "photo-ai" ? "photo + confirmed" : "selected"})</span></div>
         <div><div className="label">Journey</div>{d.journey?.origin.name} → {d.journey?.destination.name}<br />{d.departureDate} · {d.journey?.distanceKm} km</div>
         <div><div className="label">Equipment</div>{d.equipment.map((m) => EQUIPMENT[m].label).join(", ") || "none"}</div>
       </div>

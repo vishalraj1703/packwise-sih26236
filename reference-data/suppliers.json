@@ -1,0 +1,862 @@
+{
+ "suppliers": [
+  {
+   "id": "sup-flex-chennai",
+   "name": "Demo Flexibles (Chennai)",
+   "city": "Chennai",
+   "lat": 13.08,
+   "lon": 80.27,
+   "deliversTo": [
+    "Tamil Nadu",
+    "Puducherry",
+    "Karnataka",
+    "Kerala",
+    "Andhra Pradesh"
+   ],
+   "simulated": true,
+   "services": [
+    "material"
+   ],
+   "contactNote": "Quotation workflow only (simulated)."
+  },
+  {
+   "id": "sup-barrier-cbe",
+   "name": "Demo Barrier Packaging (Coimbatore)",
+   "city": "Coimbatore",
+   "lat": 11.02,
+   "lon": 76.96,
+   "deliversTo": [
+    "all-india"
+   ],
+   "simulated": true,
+   "services": [
+    "material"
+   ],
+   "contactNote": "Provides third-party OTR/WVTR reports (simulated)."
+  },
+  {
+   "id": "sup-agri-cuddalore",
+   "name": "Demo Agri-Pack Store (Cuddalore)",
+   "city": "Cuddalore",
+   "lat": 11.75,
+   "lon": 79.75,
+   "deliversTo": [
+    "Tamil Nadu",
+    "Puducherry"
+   ],
+   "simulated": true,
+   "services": [
+    "material"
+   ],
+   "contactNote": "Small quantities, stock items (simulated)."
+  },
+  {
+   "id": "sup-green-blr",
+   "name": "Demo Green Packaging (Bengaluru)",
+   "city": "Bengaluru",
+   "lat": 12.97,
+   "lon": 77.59,
+   "deliversTo": [
+    "all-india"
+   ],
+   "simulated": true,
+   "services": [
+    "material"
+   ],
+   "contactNote": "Compostable & recyclable-design films (simulated)."
+  },
+  {
+   "id": "sup-rigid-chennai",
+   "name": "Demo Rigid Containers (Chennai)",
+   "city": "Chennai",
+   "lat": 13.1,
+   "lon": 80.2,
+   "deliversTo": [
+    "Tamil Nadu",
+    "Puducherry",
+    "Andhra Pradesh"
+   ],
+   "simulated": true,
+   "services": [
+    "material"
+   ],
+   "contactNote": "Tins and jars (simulated)."
+  },
+  {
+   "id": "sup-freshfilm-pune",
+   "name": "Demo Fresh-Pack Films (Pune)",
+   "city": "Pune",
+   "lat": 18.52,
+   "lon": 73.86,
+   "deliversTo": [
+    "all-india"
+   ],
+   "simulated": true,
+   "services": [
+    "material"
+   ],
+   "contactNote": "Anti-fog films with laser micro-perforation to specification (simulated)."
+  },
+  {
+   "id": "svc-pack-panruti",
+   "name": "Demo Packing Service (Panruti)",
+   "city": "Panruti",
+   "lat": 11.78,
+   "lon": 79.55,
+   "deliversTo": [
+    "Tamil Nadu",
+    "Puducherry"
+   ],
+   "simulated": true,
+   "services": [
+    "packing-service"
+   ],
+   "packingService": {
+    "methods": [
+     "band-sealer",
+     "vacuum-chamber",
+     "vacuum-gas-flush",
+     "can-seamer"
+    ],
+    "pricePerPackInr": 4,
+    "minChargeInr": 500,
+    "city": "Panruti"
+   },
+   "contactNote": "Vacuum, nitrogen flushing and can seaming by the pack (simulated)."
+  },
+  {
+   "id": "svc-incubator-chennai",
+   "name": "Demo Food Processing Incubator (Chennai)",
+   "city": "Chennai",
+   "lat": 12.99,
+   "lon": 80.22,
+   "deliversTo": [
+    "Tamil Nadu"
+   ],
+   "simulated": true,
+   "services": [
+    "packing-service"
+   ],
+   "packingService": {
+    "methods": [
+     "band-sealer",
+     "vacuum-gas-flush",
+     "tray-sealer"
+    ],
+    "pricePerPackInr": 6,
+    "minChargeInr": 800,
+    "city": "Chennai"
+   },
+   "contactNote": "Shared facility, bookable by the hour (simulated)."
+  }
+ ],
+ "products": [
+  {
+   "id": "sp-1",
+   "supplierId": "sup-flex-chennai",
+   "structureId": "ldpe-50",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2,
+    5
+   ],
+   "unitPriceInr": {
+    "1": 1.9,
+    "2": 2.73,
+    "5": 4.59,
+    "0.25": 1.01,
+    "0.5": 1.36
+   },
+   "moqUnits": 200,
+   "setupCostInr": 0,
+   "leadTimeDays": 3,
+   "documentation": "supplier-declared",
+   "declared": {
+    "otr": 4407,
+    "wvtr": 10,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)"
+   },
+   "materialLotPrefix": "FLEX1"
+  },
+  {
+   "id": "sp-2",
+   "supplierId": "sup-flex-chennai",
+   "structureId": "pet-pe",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2
+   ],
+   "unitPriceInr": {
+    "1": 4.87,
+    "2": 6.84,
+    "0.25": 2.78,
+    "0.5": 3.6
+   },
+   "moqUnits": 500,
+   "setupCostInr": 1500,
+   "leadTimeDays": 7,
+   "documentation": "supplier-declared",
+   "declared": {
+    "otr": 116,
+    "wvtr": 8.1,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)"
+   },
+   "materialLotPrefix": "FLEX2"
+  },
+  {
+   "id": "sp-3",
+   "supplierId": "sup-flex-chennai",
+   "structureId": "pet-metpet-pe",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2
+   ],
+   "unitPriceInr": {
+    "1": 7.17,
+    "2": 10.34,
+    "0.25": 3.81,
+    "0.5": 5.13
+   },
+   "moqUnits": 500,
+   "setupCostInr": 1500,
+   "leadTimeDays": 7,
+   "documentation": "supplier-declared",
+   "declared": {
+    "otr": 1.12,
+    "wvtr": 0.98,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)"
+   },
+   "materialLotPrefix": "FLEX3"
+  },
+  {
+   "id": "sp-4",
+   "supplierId": "sup-flex-chennai",
+   "structureId": "pet-al-pe",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2,
+    5
+   ],
+   "unitPriceInr": {
+    "1": 11.27,
+    "2": 16.57,
+    "5": 28.38,
+    "0.25": 5.63,
+    "0.5": 7.85
+   },
+   "moqUnits": 500,
+   "setupCostInr": 1500,
+   "leadTimeDays": 7,
+   "documentation": "supplier-declared",
+   "declared": {
+    "otr": 0.05,
+    "wvtr": 0.05,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)"
+   },
+   "materialLotPrefix": "FLEX4"
+  },
+  {
+   "id": "sp-5",
+   "supplierId": "sup-flex-chennai",
+   "structureId": "bopp-cpp",
+   "sizesKg": [
+    0.1,
+    0.25,
+    0.5,
+    1
+   ],
+   "unitPriceInr": {
+    "1": 2.02,
+    "0.1": 0.76,
+    "0.25": 1.07,
+    "0.5": 1.44
+   },
+   "moqUnits": 1000,
+   "setupCostInr": 1500,
+   "leadTimeDays": 7,
+   "documentation": "supplier-declared",
+   "declared": {
+    "otr": 1499,
+    "wvtr": 4.21,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)"
+   },
+   "materialLotPrefix": "FLEX5"
+  },
+  {
+   "id": "sp-6",
+   "supplierId": "sup-flex-chennai",
+   "structureId": "bopp-metbopp",
+   "sizesKg": [
+    0.05,
+    0.1,
+    0.25,
+    0.5
+   ],
+   "unitPriceInr": {
+    "0.05": 0.6,
+    "0.1": 0.73,
+    "0.25": 1.01,
+    "0.5": 1.36
+   },
+   "moqUnits": 1000,
+   "setupCostInr": 1500,
+   "leadTimeDays": 7,
+   "documentation": "supplier-declared",
+   "declared": {
+    "otr": 63,
+    "wvtr": 0.41,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)"
+   },
+   "materialLotPrefix": "FLEX6"
+  },
+  {
+   "id": "sp-7",
+   "supplierId": "sup-barrier-cbe",
+   "structureId": "pa-pe-vac",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2,
+    5,
+    10
+   ],
+   "unitPriceInr": {
+    "1": 3.66,
+    "2": 5.42,
+    "5": 9.32,
+    "10": 14.26,
+    "0.25": 1.8,
+    "0.5": 2.53
+   },
+   "moqUnits": 300,
+   "setupCostInr": 0,
+   "leadTimeDays": 6,
+   "documentation": "third-party-test-report",
+   "declared": {
+    "otr": 69,
+    "wvtr": 6.57,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)",
+    "reportDate": "2026-06-15"
+   },
+   "materialLotPrefix": "BARR7"
+  },
+  {
+   "id": "sp-8",
+   "supplierId": "sup-barrier-cbe",
+   "structureId": "pa-evoh-pe",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2,
+    5,
+    10
+   ],
+   "unitPriceInr": {
+    "1": 5.28,
+    "2": 7.88,
+    "5": 13.67,
+    "10": 20.99,
+    "0.25": 2.52,
+    "0.5": 3.61
+   },
+   "moqUnits": 300,
+   "setupCostInr": 0,
+   "leadTimeDays": 8,
+   "documentation": "third-party-test-report",
+   "declared": {
+    "otr": 9.34,
+    "wvtr": 7.15,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)",
+    "reportDate": "2026-06-15"
+   },
+   "materialLotPrefix": "BARR8"
+  },
+  {
+   "id": "sp-9",
+   "supplierId": "sup-barrier-cbe",
+   "structureId": "pe-evoh-pe",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2,
+    5
+   ],
+   "unitPriceInr": {
+    "1": 8.63,
+    "2": 12.55,
+    "5": 21.29,
+    "0.25": 4.45,
+    "0.5": 6.09
+   },
+   "moqUnits": 500,
+   "setupCostInr": 1200,
+   "leadTimeDays": 10,
+   "documentation": "third-party-test-report",
+   "declared": {
+    "otr": 13,
+    "wvtr": 4.72,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)",
+    "reportDate": "2026-06-15"
+   },
+   "materialLotPrefix": "BARR9"
+  },
+  {
+   "id": "sp-10",
+   "supplierId": "sup-barrier-cbe",
+   "structureId": "alox-pet-pe",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2
+   ],
+   "unitPriceInr": {
+    "1": 6.34,
+    "2": 9.08,
+    "0.25": 3.44,
+    "0.5": 4.58
+   },
+   "moqUnits": 500,
+   "setupCostInr": 1200,
+   "leadTimeDays": 10,
+   "documentation": "third-party-test-report",
+   "declared": {
+    "otr": 1.15,
+    "wvtr": 1.01,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)",
+    "reportDate": "2026-06-15"
+   },
+   "materialLotPrefix": "BARR10"
+  },
+  {
+   "id": "sp-11",
+   "supplierId": "sup-barrier-cbe",
+   "structureId": "pet-al-pe",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2,
+    5
+   ],
+   "unitPriceInr": {
+    "1": 9.37,
+    "2": 13.69,
+    "5": 23.3,
+    "0.25": 4.79,
+    "0.5": 6.59
+   },
+   "moqUnits": 1000,
+   "setupCostInr": 0,
+   "leadTimeDays": 6,
+   "documentation": "third-party-test-report",
+   "declared": {
+    "otr": 0.05,
+    "wvtr": 0.05,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)",
+    "reportDate": "2026-06-15"
+   },
+   "materialLotPrefix": "BARR11"
+  },
+  {
+   "id": "sp-12",
+   "supplierId": "sup-agri-cuddalore",
+   "structureId": "ldpe-50",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2,
+    5
+   ],
+   "unitPriceInr": {
+    "1": 2.28,
+    "2": 3.31,
+    "5": 5.61,
+    "0.25": 1.18,
+    "0.5": 1.61
+   },
+   "moqUnits": 50,
+   "setupCostInr": 0,
+   "leadTimeDays": 1,
+   "documentation": "none",
+   "declared": {
+    "testConditions": "No documentation provided"
+   },
+   "materialLotPrefix": "AGRI12"
+  },
+  {
+   "id": "sp-13",
+   "supplierId": "sup-agri-cuddalore",
+   "structureId": "ldpe-100-liner",
+   "sizesKg": [
+    5,
+    10,
+    25,
+    50
+   ],
+   "unitPriceInr": {
+    "5": 9.12,
+    "10": 13.95,
+    "25": 24.79,
+    "50": 38.58
+   },
+   "moqUnits": 10,
+   "setupCostInr": 0,
+   "leadTimeDays": 1,
+   "documentation": "none",
+   "declared": {
+    "testConditions": "No documentation provided"
+   },
+   "materialLotPrefix": "AGRI13"
+  },
+  {
+   "id": "sp-14",
+   "supplierId": "sup-agri-cuddalore",
+   "structureId": "woven-ldpe-liner",
+   "sizesKg": [
+    10,
+    25,
+    50
+   ],
+   "unitPriceInr": {
+    "10": 21.91,
+    "25": 39.08,
+    "50": 60.91
+   },
+   "moqUnits": 10,
+   "setupCostInr": 0,
+   "leadTimeDays": 1,
+   "documentation": "none",
+   "declared": {
+    "testConditions": "No documentation provided"
+   },
+   "materialLotPrefix": "AGRI14"
+  },
+  {
+   "id": "sp-15",
+   "supplierId": "sup-agri-cuddalore",
+   "structureId": "ldpe-25-antifog",
+   "sizesKg": [
+    0.5,
+    1,
+    2,
+    5
+   ],
+   "unitPriceInr": {
+    "1": 1.31,
+    "2": 1.83,
+    "5": 3,
+    "0.5": 0.97
+   },
+   "moqUnits": 100,
+   "setupCostInr": 0,
+   "leadTimeDays": 2,
+   "documentation": "none",
+   "declared": {
+    "testConditions": "No documentation provided"
+   },
+   "materialLotPrefix": "AGRI15"
+  },
+  {
+   "id": "sp-16",
+   "supplierId": "sup-agri-cuddalore",
+   "structureId": "ldpe-30-crate-liner",
+   "sizesKg": [
+    5,
+    10,
+    20
+   ],
+   "unitPriceInr": {
+    "5": 3.34,
+    "10": 5,
+    "20": 7.61
+   },
+   "moqUnits": 20,
+   "setupCostInr": 0,
+   "leadTimeDays": 2,
+   "documentation": "none",
+   "declared": {
+    "testConditions": "No documentation provided"
+   },
+   "materialLotPrefix": "AGRI16"
+  },
+  {
+   "id": "sp-17",
+   "supplierId": "sup-agri-cuddalore",
+   "structureId": "open-crate",
+   "sizesKg": [
+    10,
+    20
+   ],
+   "unitPriceInr": {
+    "10": 15.34,
+    "20": 23.25
+   },
+   "moqUnits": 1,
+   "setupCostInr": 0,
+   "leadTimeDays": 1,
+   "documentation": "none",
+   "declared": {
+    "testConditions": "No documentation provided"
+   },
+   "materialLotPrefix": "AGRI17"
+  },
+  {
+   "id": "sp-18",
+   "supplierId": "sup-green-blr",
+   "structureId": "cellulose-compost",
+   "sizesKg": [
+    0.1,
+    0.25,
+    0.5,
+    1
+   ],
+   "unitPriceInr": {
+    "1": 17.23,
+    "0.1": 4.85,
+    "0.25": 7.84,
+    "0.5": 11.53
+   },
+   "moqUnits": 500,
+   "setupCostInr": 2000,
+   "leadTimeDays": 12,
+   "documentation": "third-party-test-report",
+   "declared": {
+    "otr": 19,
+    "wvtr": 25,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)",
+    "reportDate": "2026-06-15"
+   },
+   "materialLotPrefix": "GREE18"
+  },
+  {
+   "id": "sp-19",
+   "supplierId": "sup-green-blr",
+   "structureId": "pe-evoh-pe",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2,
+    5
+   ],
+   "unitPriceInr": {
+    "1": 7.09,
+    "2": 10.21,
+    "5": 17.17,
+    "0.25": 3.77,
+    "0.5": 5.07
+   },
+   "moqUnits": 1000,
+   "setupCostInr": 1500,
+   "leadTimeDays": 12,
+   "documentation": "third-party-test-report",
+   "declared": {
+    "otr": 14,
+    "wvtr": 5.11,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)",
+    "reportDate": "2026-06-15"
+   },
+   "materialLotPrefix": "GREE19"
+  },
+  {
+   "id": "sp-20",
+   "supplierId": "sup-green-blr",
+   "structureId": "kraft-metpet-pe",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1
+   ],
+   "unitPriceInr": {
+    "1": 7.48,
+    "0.25": 3.94,
+    "0.5": 5.34
+   },
+   "moqUnits": 500,
+   "setupCostInr": 1500,
+   "leadTimeDays": 10,
+   "documentation": "supplier-declared",
+   "declared": {
+    "otr": 1.14,
+    "wvtr": 1.03,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)"
+   },
+   "materialLotPrefix": "GREE20"
+  },
+  {
+   "id": "sp-21",
+   "supplierId": "sup-rigid-chennai",
+   "structureId": "tin-can",
+   "sizesKg": [
+    1,
+    5,
+    11.34
+   ],
+   "unitPriceInr": {
+    "1": 53.9,
+    "5": 141.57,
+    "11.34": 231.4
+   },
+   "moqUnits": 20,
+   "setupCostInr": 0,
+   "leadTimeDays": 4,
+   "documentation": "supplier-declared",
+   "declared": {
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)"
+   },
+   "materialLotPrefix": "RIGI21"
+  },
+  {
+   "id": "sp-22",
+   "supplierId": "sup-rigid-chennai",
+   "structureId": "glass-jar",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1
+   ],
+   "unitPriceInr": {
+    "1": 29.19,
+    "0.25": 12.71,
+    "0.5": 19.26
+   },
+   "moqUnits": 50,
+   "setupCostInr": 0,
+   "leadTimeDays": 3,
+   "documentation": "supplier-declared",
+   "declared": {
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)"
+   },
+   "materialLotPrefix": "RIGI22"
+  },
+  {
+   "id": "sp-23",
+   "supplierId": "sup-rigid-chennai",
+   "structureId": "pet-jar",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1
+   ],
+   "unitPriceInr": {
+    "1": 13.37,
+    "0.25": 5.82,
+    "0.5": 8.82
+   },
+   "moqUnits": 100,
+   "setupCostInr": 0,
+   "leadTimeDays": 3,
+   "documentation": "supplier-declared",
+   "declared": {
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)"
+   },
+   "materialLotPrefix": "RIGI23"
+  },
+  {
+   "id": "sp-24",
+   "supplierId": "sup-freshfilm-pune",
+   "structureId": "bopp-30-antifog",
+   "sizesKg": [
+    0.25,
+    0.5,
+    1,
+    2
+   ],
+   "unitPriceInr": {
+    "1": 1.49,
+    "2": 2.11,
+    "0.25": 0.83,
+    "0.5": 1.09
+   },
+   "moqUnits": 2000,
+   "setupCostInr": 2500,
+   "leadTimeDays": 14,
+   "documentation": "third-party-test-report",
+   "declared": {
+    "otr": 1710,
+    "wvtr": 4.75,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)",
+    "reportDate": "2026-06-15"
+   },
+   "materialLotPrefix": "FRES24"
+  },
+  {
+   "id": "sp-25",
+   "supplierId": "sup-freshfilm-pune",
+   "structureId": "ldpe-25-antifog",
+   "sizesKg": [
+    0.5,
+    1,
+    2,
+    5
+   ],
+   "unitPriceInr": {
+    "1": 1.09,
+    "2": 1.5,
+    "5": 2.42,
+    "0.5": 0.83
+   },
+   "moqUnits": 1000,
+   "setupCostInr": 1500,
+   "leadTimeDays": 12,
+   "documentation": "third-party-test-report",
+   "declared": {
+    "otr": 8892,
+    "wvtr": 21,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)",
+    "reportDate": "2026-06-15"
+   },
+   "materialLotPrefix": "FRES25"
+  },
+  {
+   "id": "sp-26",
+   "supplierId": "sup-freshfilm-pune",
+   "structureId": "ldpe-30-crate-liner",
+   "sizesKg": [
+    5,
+    10,
+    20
+   ],
+   "unitPriceInr": {
+    "5": 2.87,
+    "10": 4.28,
+    "20": 6.49
+   },
+   "moqUnits": 500,
+   "setupCostInr": 1500,
+   "leadTimeDays": 12,
+   "documentation": "third-party-test-report",
+   "declared": {
+    "otr": 7735,
+    "wvtr": 18,
+    "testConditions": "OTR 23 °C / 0% RH (ASTM D3985); WVTR 38 °C / 90% RH (ASTM F1249)",
+    "reportDate": "2026-06-15"
+   },
+   "materialLotPrefix": "FRES26"
+  }
+ ],
+ "absorberPriceInr": {
+  "20": 2.5,
+  "30": 3,
+  "50": 3.5,
+  "100": 5,
+  "200": 7,
+  "300": 9,
+  "500": 12,
+  "1000": 18,
+  "2000": 30
+ }
+}

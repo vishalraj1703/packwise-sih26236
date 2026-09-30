@@ -1,0 +1,152 @@
+{
+ "note": "Photos from Wikimedia Commons under the licences shown. Shown as illustrations of food types and visible pack formats only.",
+ "foods": {
+  "cashew-kernel": {
+   "file": "cashew-kernel.jpg",
+   "title": "Cashews2.JPG",
+   "author": "Vicki Nunn",
+   "license": "Public domain",
+   "licenseUrl": "",
+   "source": "https://commons.wikimedia.org/wiki/File:Cashews2.JPG"
+  },
+  "groundnut-kernel": {
+   "file": "groundnut-kernel.jpg",
+   "title": "Peanut Kernels.jpg",
+   "author": "Thamizhpparithi Maari",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Peanut_Kernels.jpg"
+  },
+  "rice-raw": {
+   "file": "rice-raw.jpg",
+   "title": "Basmati Rice India, raw.jpg",
+   "author": "cookbookman17",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Basmati_Rice_India,_raw.jpg"
+  },
+  "wheat-flour": {
+   "file": "wheat-flour.jpg",
+   "title": "Atta flour.jpg",
+   "author": "Nga Ahorangi",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Atta_flour.jpg"
+  },
+  "turmeric-powder": {
+   "file": "turmeric-powder.jpg",
+   "title": "Turmeric Powder on a Spoon - Black Background.jpg",
+   "author": "formulatehealth",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Turmeric_Powder_on_a_Spoon_-_Black_Background.jpg"
+  },
+  "banana-chips": {
+   "file": "banana-chips.jpg",
+   "title": "Kerala banana chips Upperi varuthath.jpg",
+   "author": "Ramesh NG",
+   "license": "CC BY-SA 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Kerala_banana_chips_Upperi_varuthath.jpg"
+  },
+  "jaggery": {
+   "file": "jaggery.jpg",
+   "title": "Organic Chemical free Kolhapur Jaggery Dhep (Block) - 1 Kg each.jpg",
+   "author": "Sushant Medhe Pawar of Kolhapur Agricultural Produce Market (Kolhapur Sheti Utpanna Bazar Samiti) from Kolhapur",
+   "license": "CC0",
+   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "source": "https://commons.wikimedia.org/wiki/File:Organic_Chemical_free_Kolhapur_Jaggery_Dhep_(Block)_-_1_Kg_each.jpg"
+  },
+  "tomato": {
+   "file": "tomato.jpg",
+   "title": "India - Koyambedu Market - Tomatoes 02 (3987058522).jpg",
+   "author": "McKay Savage from London, UK",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "source": "https://commons.wikimedia.org/wiki/File:India_-_Koyambedu_Market_-_Tomatoes_02_(3987058522).jpg"
+  },
+  "mango": {
+   "file": "mango.jpg",
+   "title": "Alphonso Mango In a non-ripe state.jpg",
+   "author": "Ankit Main",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Alphonso_Mango_In_a_non-ripe_state.jpg"
+  },
+  "banana": {
+   "file": "banana.jpg",
+   "title": "Green raw bananas.jpg",
+   "author": "Vitaium",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Green_raw_bananas.jpg"
+  },
+  "spinach": {
+   "file": "spinach.jpg",
+   "title": "Fresh Spinach leaves.jpg",
+   "author": "Charipearl",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Fresh_Spinach_leaves.jpg"
+  },
+  "mango-pickle": {
+   "file": "mango-pickle.jpg",
+   "title": "Mango Pickle in pot.jpg",
+   "author": "Saileshpat",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Mango_Pickle_in_pot.jpg"
+  },
+  "paneer": {
+   "file": "paneer.jpg",
+   "title": "Panir Paneer Indian cheese fresh.jpg",
+   "author": "Sonja Pauen - Stanhopea",
+   "license": "CC BY 2.0 de",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0/de/deed.en",
+   "source": "https://commons.wikimedia.org/wiki/File:Panir_Paneer_Indian_cheese_fresh.jpg"
+  },
+  "instant-noodles": {
+   "file": "instant-noodles.jpg",
+   "title": "Instantnoodles.jpg",
+   "author": "Eptalon",
+   "license": "CC BY-SA 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Instantnoodles.jpg"
+  }
+ },
+ "packs": {
+  "vacuum-pack": {
+   "file": "pack-vacuum.jpg",
+   "title": "Vacuum-Packed Sweet Corn in Japan.jpg",
+   "author": "Sarah Stierch",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Vacuum-Packed_Sweet_Corn_in_Japan.jpg"
+  },
+  "tin": {
+   "file": "pack-tin.jpg",
+   "title": "Empty tin can2009-01-19.jpg",
+   "author": "Sun Ladder",
+   "license": "CC BY-SA 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "source": "https://commons.wikimedia.org/wiki/File:Empty_tin_can2009-01-19.jpg"
+  },
+  "sack-liner": {
+   "file": "pack-sack.jpg",
+   "title": "Gunny bags with sand, TAMIL NADU70.jpg",
+   "author": "த*உழவன்",
+   "license": "Public domain",
+   "licenseUrl": "",
+   "source": "https://commons.wikimedia.org/wiki/File:Gunny_bags_with_sand,_TAMIL_NADU70.jpg"
+  },
+  "crate": {
+   "file": "tomato.jpg",
+   "title": "India - Koyambedu Market - Tomatoes 02 (3987058522).jpg",
+   "author": "McKay Savage from London, UK",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "source": "https://commons.wikimedia.org/wiki/File:India_-_Koyambedu_Market_-_Tomatoes_02_(3987058522).jpg",
+   "caption": "Tomatoes in plastic crates, Koyambedu market, Chennai"
+  }
+ }
+}

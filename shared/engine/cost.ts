@@ -56,10 +56,11 @@ export function aggregateOrderCost(items: CostItem[], transport: TransportOption
     suppliersUsed.add(sup.id);
     const totalUnits = Object.values(g.units).reduce((a, b) => a + b, 0);
     // MOQ applies to the product line; extra units are bought at the cheapest listed size first.
-    let extra = Math.max(0, p.moqUnits - totalUnits);
+    // MOQ top-up units are bought at the cheapest listed size in this order line.
+    const extra = Math.max(0, p.moqUnits - totalUnits);
+    const cheapestSize = Object.keys(g.units).sort((a, b) => p.unitPriceInr[a] - p.unitPriceInr[b] || Number(a) - Number(b))[0];
     for (const [size, u] of Object.entries(g.units)) {
-      const buy = u + (extra > 0 ? extra : 0);
-      extra = 0;
+      const buy = u + (size === cheapestSize ? extra : 0);
       const amt = buy * p.unitPriceInr[size];
       materialTotal += amt;
       lines.push({

@@ -99,7 +99,7 @@ export default function Layout() {
       </main>
       <footer className="no-print border-t border-line px-4 py-6 text-center text-xs text-ink-3">
         SIH Problem Statement 26236 prototype · Supplier, price, transport and billing data are simulated · Seed commodity data await expert review ·{" "}
-        <Link className="underline" to="/evidence">Methods & data</Link>
+        <Link className="underline" to="/evidence">Methods & data</Link> · <Link className="underline" to="/evidence#photo-credits">Photo credits</Link>
       </footer>
     </div>
   );
