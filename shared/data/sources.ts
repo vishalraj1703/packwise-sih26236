@@ -1,0 +1,134 @@
+import type { Source } from "../types";
+
+// Sources used by the engine and the knowledge library. Values tagged with a
+// "seed" source are illustrative starting points that must be replaced by
+// sourced or measured data before any claim is made (discussion record p.3/p.6).
+export const SOURCES: Record<string, Source> = {
+  "SEED": {
+    id: "SEED",
+    title: "PackWise illustrative seed value",
+    publisher: "PackWise team",
+    kind: "seed",
+    note: "Plausible starting value entered for the prototype. Not a sourced or measured value. Requires expert review or replacement with a test report before it can support a claim."
+  },
+  "SIM": {
+    id: "SIM",
+    title: "Simulated supplier / transport / billing data",
+    publisher: "PackWise prototype",
+    kind: "simulated",
+    note: "Clearly simulated commercial data used to demonstrate the workflow. No real supplier, price or partnership is implied."
+  },
+  "UNECE-DDP17": {
+    id: "UNECE-DDP17",
+    title: "UNECE Standard DDP-17 concerning the marketing and commercial quality control of cashew kernels (2023 edition)",
+    publisher: "United Nations Economic Commission for Europe",
+    url: "https://unece.org/trade/wp7/dry-and-dried-produce-standards",
+    year: "2023",
+    kind: "standard",
+    note: "Sets a maximum moisture content for cashew kernels and calls for packaging that protects the produce properly. Does not establish a shelf life for any specific pouch."
+  },
+  "CODEX-249": {
+    id: "CODEX-249",
+    title: "Codex Standard for Instant Noodles (CXS 249-2006)",
+    publisher: "Codex Alimentarius Commission (FAO/WHO)",
+    kind: "standard",
+    note: "Sets maximum moisture for fried and non-fried instant noodles. Does not set a shelf life for any pack."
+  },
+  "SALAME": {
+    id: "SALAME",
+    title: "Salame, M. — Requirements for barrier packaging (maximum tolerable O2 gain / water gain by food type), as tabulated in food packaging textbooks",
+    publisher: "Robertson, G.L. Food Packaging: Principles and Practice (CRC Press)",
+    year: "1974 / 2013",
+    kind: "textbook",
+    note: "Order-of-magnitude oxygen tolerance classes (e.g. nuts & snacks 5–15 ppm). Class-level estimates, not product-specific limits."
+  },
+  "LABUZA": {
+    id: "LABUZA",
+    title: "Moisture-gain shelf-life model for packaged dry foods with a linear sorption isotherm",
+    publisher: "Labuza et al.; Robertson, Food Packaging: Principles and Practice, ch. on shelf-life",
+    kind: "textbook",
+    note: "ln[(Me−Mi)/(Me−Mc)] = (k/x)(A/Ws)(p0/b)·t. Valid when the isotherm is approximately linear across the aw range traversed and package permeance is constant."
+  },
+  "KADER": {
+    id: "KADER",
+    title: "Kader, A.A. (ed.) Postharvest Technology of Horticultural Crops — recommended controlled/modified atmosphere conditions",
+    publisher: "University of California ANR Publication 3311",
+    year: "2002",
+    kind: "textbook",
+    note: "Recommended O2/CO2 windows and storage temperatures per commodity. Atmospheres are commodity-, cultivar- and maturity-dependent."
+  },
+  "USDA-HB66": {
+    id: "USDA-HB66",
+    title: "USDA Agriculture Handbook 66 — The Commercial Storage of Fruits, Vegetables, and Florist and Nursery Stocks",
+    publisher: "USDA Agricultural Research Service",
+    url: "https://www.ars.usda.gov/arsuserfiles/oc/np/commercialstorage/commercialstorage.pdf",
+    year: "2016",
+    kind: "database",
+    note: "Respiration rate ranges versus temperature. Ranges are wide; cultivar and maturity matter."
+  },
+  "FISHMAN": {
+    id: "FISHMAN",
+    title: "Fishman, S., Rodov, V., Ben-Yehoshua, S. (1996) Mathematical model for perforation effect on oxygen and water vapor dynamics in modified-atmosphere packages",
+    publisher: "Journal of Food Science 61(5)",
+    year: "1996",
+    kind: "paper",
+    note: "Diffusion through a perforation with an end-correction term (L + r). Used here for per-hole gas conductance."
+  },
+  "GUILLARD": {
+    id: "GUILLARD",
+    title: "Guillard, V. et al. (2012) Uncertainty propagation in MAP modelling",
+    publisher: "INRAE/IATE — cited by the TAILORPACK portal",
+    year: "2012",
+    kind: "paper",
+    note: "Motivates reporting a probability range instead of a single equilibrium value."
+  },
+  "POLYMER-HANDBOOK": {
+    id: "POLYMER-HANDBOOK",
+    title: "Typical barrier properties of packaging films (literature ranges compiled in food packaging textbooks and supplier technical literature)",
+    publisher: "Robertson (2013); Massey, Permeability Properties of Plastics and Elastomers (2003)",
+    kind: "textbook",
+    note: "Generic typical values. A specific commercial film must be matched on its own documented test report (test method, temperature, RH, thickness)."
+  },
+  "ASTM-F88": { id: "ASTM-F88", title: "ASTM F88 — Standard Test Method for Seal Strength of Flexible Barrier Materials", publisher: "ASTM International", kind: "standard" },
+  "ASTM-F2096": { id: "ASTM-F2096", title: "ASTM F2096 — Detecting Gross Leaks in Packaging by Internal Pressurization (Bubble Test)", publisher: "ASTM International", kind: "standard" },
+  "ASTM-F1140": { id: "ASTM-F1140", title: "ASTM F1140 — Internal Pressurization Failure Resistance of Unrestrained Packages (burst)", publisher: "ASTM International", kind: "standard" },
+  "ASTM-D3985": { id: "ASTM-D3985", title: "ASTM D3985 — Oxygen Gas Transmission Rate Through Plastic Film Using a Coulometric Sensor", publisher: "ASTM International", kind: "standard" },
+  "ASTM-F1249": { id: "ASTM-F1249", title: "ASTM F1249 — Water Vapor Transmission Rate Through Plastic Film Using a Modulated Infrared Sensor", publisher: "ASTM International", kind: "standard" },
+  "ISTA-1A": { id: "ISTA-1A", title: "ISTA 1A — Packaged-Products 150 lb (68 kg) or Less: non-simulation integrity test (drop heights by weight)", publisher: "International Safe Transit Association", kind: "standard" },
+  "MCKEE": {
+    id: "MCKEE",
+    title: "McKee, Gander & Wachuta (1963) — Compression strength formula for corrugated boxes",
+    publisher: "Paperboard Packaging 48(8)",
+    year: "1963",
+    kind: "paper",
+    note: "BCT ≈ 5.87 · ECT · √(caliper · perimeter). Environmental derating factors are commonly cited industry rules of thumb."
+  },
+  "ISO-2859": { id: "ISO-2859", title: "Zero-acceptance (c = 0) attribute sampling: n = ln(1 − C) / ln(1 − p)", publisher: "Statistical quality control (cf. ISO 2859-1 / Squeglia c=0 plans)", kind: "standard" },
+  "PWM-2022": {
+    id: "PWM-2022",
+    title: "Plastic Waste Management (Amendment) Rules, 2022 — EPR categories I–IV",
+    publisher: "Ministry of Environment, Forest and Climate Change, Government of India",
+    year: "2022",
+    kind: "regulation",
+    note: "Category I rigid; II flexible single/multilayer of different plastics; III multilayered plastic with at least one non-plastic layer; IV compostable plastics."
+  },
+  "FDA-114": {
+    id: "FDA-114",
+    title: "21 CFR Part 114 — Acidified foods (equilibrium pH ≤ 4.6 boundary)",
+    publisher: "US Food and Drug Administration",
+    kind: "regulation",
+    note: "Used only as a widely referenced pH boundary indicating when acidity is decision-critical; Indian FSSAI requirements must be checked for the actual product."
+  },
+  "GS1-EPCIS": {
+    id: "GS1-EPCIS",
+    title: "GS1 EPCIS 2.0 — supply-chain event standard; GS1 Digital Link",
+    publisher: "GS1",
+    url: "https://www.gs1.org/standards/epcis",
+    kind: "standard",
+    note: "Event design (what/when/where/why) informed by EPCIS concepts. No compliance claim is made."
+  },
+  "OPEN-METEO": { id: "OPEN-METEO", title: "Open-Meteo forecast and geocoding APIs", publisher: "open-meteo.com", url: "https://open-meteo.com/", kind: "database" },
+  "OSRM": { id: "OSRM", title: "OSRM routing (public demo server) on OpenStreetMap data", publisher: "Project OSRM / OpenStreetMap contributors", url: "https://project-osrm.org/", kind: "database" },
+  "BUCK": { id: "BUCK", title: "Saturation vapour pressure of water (Magnus–Alduchov form)", publisher: "Alduchov & Eskridge (1996), J. Applied Meteorology", kind: "paper" },
+  "EXPERT-GLOSSARY": { id: "EXPERT-GLOSSARY", title: "PackWise plain-language glossary", publisher: "PackWise team", kind: "seed" }
+};

@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans Tamil", "Noto Sans Devanagari", system-ui, sans-serif;
+  --color-ink: #0b2f30;
+  --color-ink-2: #3f5859;
+  --color-ink-3: #6b8081;
+  --color-brand: #0f3d3e;
+  --color-brand-2: #17595a;
+  --color-brand-3: #e3efee;
+  --color-accent: #f4c95d;
+  --color-accent-2: #fbeccb;
+  --color-surface: #f6f8f7;
+  --color-card: #ffffff;
+  --color-line: #dfe7e6;
+  --color-good: #1d7a46;
+  --color-good-bg: #e3f4ea;
+  --color-warn: #8a5a00;
+  --color-warn-bg: #fdf1d6;
+  --color-bad: #b42318;
+  --color-bad-bg: #fde8e6;
+  --color-info: #1c5cab;
+  --color-info-bg: #e6effb;
+  --color-series-1: #2a78d6;
+  --color-series-2: #eb6834;
+  --color-series-3: #1baf7a;
+}
+
+html { background: var(--color-surface); color: var(--color-ink); }
+body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+
+@utility card { @apply bg-card rounded-2xl border border-line shadow-[0_1px_2px_rgba(11,47,48,0.04)]; }
+@utility btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed; }
+@utility btn-primary { @apply btn bg-brand text-white hover:bg-brand-2; }
+@utility btn-accent { @apply btn bg-accent text-ink hover:brightness-95; }
+@utility btn-ghost { @apply btn border border-line bg-white text-ink hover:bg-brand-3; }
+@utility btn-sm { @apply px-3 py-1.5 text-xs rounded-lg; }
+@utility input { @apply w-full rounded-xl border border-line bg-white px-3 py-2.5 text-sm outline-none focus:border-brand-2 focus:ring-2 focus:ring-brand-3; }
+@utility label { @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-ink-3; }
+@utility chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+@utility h1 { @apply text-2xl sm:text-3xl font-bold tracking-tight text-ink; }
+@utility h2 { @apply text-lg font-bold text-ink; }
+@utility muted { @apply text-sm text-ink-2; }
+@utility table-clean { @apply w-full text-sm; & th { @apply border-b border-line px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-ink-3; } & td { @apply border-b border-line px-3 py-2 align-top; } }
+
+@media print {
+  .no-print { display: none !important; }
+  body, html { background: white; }
+  .card { box-shadow: none; border-color: #ccc; }
+}

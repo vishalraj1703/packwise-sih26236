@@ -1,0 +1,9 @@
+node_modules
+dist
+/data/*.db*
+/uploads
+.env
+scratch
+/data
+.claude
+*.log

@@ -1,0 +1,106 @@
+import type { PackFormat } from "../types";
+
+// Real products that people see in Indian shops, grouped by the PACKAGING
+// FORMAT that is visible on the shelf. Only visible features are stated.
+// We have NOT verified any brand's exact material layers or shelf life, and no
+// brand endorses or is affiliated with PackWise (discussion record p.6).
+// Verified examples (photo + documented structure + labelled shelf life +
+// source date) are added by reviewers and stored in the database.
+
+export interface FamiliarExample {
+  id: string;
+  products: string; // what it is
+  brands: string[]; // well-known brands sold in this visible format
+  structureIds: string[]; // PackWise structures with the same format
+  format: PackFormat;
+  visible: string[]; // what anyone can see on the pack
+  sameNeed: string; // why a food in this pack has similar protection needs
+}
+
+export const FAMILIAR_EXAMPLES: FamiliarExample[] = [
+  {
+    id: "chips", products: "Potato chips and namkeen packets", brands: ["Lay's", "Bingo!", "Haldiram's"],
+    structureIds: ["bopp-metbopp", "pet-metpet-pe", "kraft-metpet-pe"], format: "pillow-pouch",
+    visible: ["Shiny silver inside", "Puffed up with gas", "Sealed at top and bottom"],
+    sameNeed: "Fried snacks go soft with moisture and taste rancid with oxygen and light — the same needs as cashews, groundnuts and banana chips."
+  },
+  {
+    id: "noodles", products: "Instant noodles packets", brands: ["Maggi", "Yippee!", "Top Ramen"],
+    structureIds: ["bopp-metbopp", "bopp-cpp"], format: "pillow-pouch",
+    visible: ["Printed flexible pillow pack", "Sealed at both ends", "No zip — used up in one go"],
+    sameNeed: "Dry, fried noodle cakes must be kept dry and away from air; single-use packs are opened once."
+  },
+  {
+    id: "biscuits", products: "Biscuit wrappers", brands: ["Parle-G", "Britannia"],
+    structureIds: ["bopp-cpp"], format: "pillow-pouch",
+    visible: ["Glossy printed wrapper", "Sealed along the back and both ends"],
+    sameNeed: "Crisp dry foods lose crispness when they absorb moisture."
+  },
+  {
+    id: "milk-sachet", products: "Milk and curd sachets", brands: ["Aavin", "Amul", "Nandini"],
+    structureIds: ["ldpe-50"], format: "pillow-pouch",
+    visible: ["Soft plain plastic pouch", "Heat-sealed ends", "Kept cold, used within days"],
+    sameNeed: "A simple sealed polythene pouch is enough when the food is used quickly."
+  },
+  {
+    id: "dry-fruit-zip", products: "Supermarket dry fruit and seed packs", brands: ["Nutraj", "Happilo"],
+    structureIds: ["pet-pe", "pet-metpet-pe", "alox-pet-pe", "kraft-metpet-pe", "pe-evoh-pe"], format: "stand-up-pouch",
+    visible: ["Stands on the shelf", "Zip to reclose", "Often silver inside or a clear window"],
+    sameNeed: "Nuts and dry fruits need protection from moisture and air, and the zip helps after opening."
+  },
+  {
+    id: "retort", products: "Ready-to-eat curry pouches", brands: ["MTR", "Haldiram's"],
+    structureIds: ["pet-al-pe"], format: "stand-up-pouch",
+    visible: ["Foil-looking pouch inside a carton", "Very stiff, fully sealed"],
+    sameNeed: "Foil layers block oxygen, moisture and light almost completely."
+  },
+  {
+    id: "paneer", products: "Packed paneer and cheese blocks", brands: ["Amul", "Milky Mist"],
+    structureIds: ["pa-pe-vac", "pa-evoh-pe"], format: "vacuum-pack",
+    visible: ["Plastic tight against the food", "No air inside", "Kept in the fridge"],
+    sameNeed: "Removing air slows spoilage and oxidation — but chilled foods still need the cold chain."
+  },
+  {
+    id: "tins", products: "Ghee tins and cashew export tins", brands: ["Amul ghee", "Aavin ghee"],
+    structureIds: ["tin-can"], format: "tin",
+    visible: ["Sealed metal tin", "Cashew exporters traditionally use 25 lb vacuum or CO₂-flushed tins"],
+    sameNeed: "Metal blocks light, oxygen and moisture; air inside is removed or replaced for long storage."
+  },
+  {
+    id: "glass-jar", products: "Pickles and instant coffee in glass jars", brands: ["Priya pickles", "Nescafé Classic"],
+    structureIds: ["glass-jar"], format: "jar",
+    visible: ["Glass jar with a sealed cap", "Inner seal under the cap on many products"],
+    sameNeed: "Glass does not react with oil or acid; the cap and inner seal decide how well air is kept out."
+  },
+  {
+    id: "plastic-jar", products: "Plastic jars for peanut butter, honey and pickles", brands: [],
+    structureIds: ["pet-jar"], format: "jar",
+    visible: ["Clear plastic jar", "Screw cap, often with an inner seal"],
+    sameNeed: "Lighter and unbreakable, but lets in a little more air than glass."
+  },
+  {
+    id: "sacks", products: "Rice, sugar and flour sacks at wholesale shops", brands: [],
+    structureIds: ["woven-ldpe-liner", "ldpe-100-liner"], format: "sack-liner",
+    visible: ["Woven outer sack", "Plastic bag inside for moisture protection"],
+    sameNeed: "Bulk dry foods mainly need protection from damp and insects during short storage."
+  },
+  {
+    id: "mandi-crates", products: "Vegetable and fruit crates in mandis and supermarkets", brands: [],
+    structureIds: ["open-crate", "ldpe-30-crate-liner"], format: "crate",
+    visible: ["Plastic crates with air holes", "Stacked without crushing the produce"],
+    sameNeed: "Fresh produce keeps breathing — it needs air flow and cool temperature more than a barrier."
+  },
+  {
+    id: "veg-bags", products: "Pre-packed vegetables and salad leaves in supermarkets", brands: [],
+    structureIds: ["bopp-30-antifog", "ldpe-25-antifog"], format: "pillow-pouch",
+    visible: ["Clear bag that does not fog up", "Tiny holes (sometimes hard to see)", "Kept in chilled shelves"],
+    sameNeed: "Small holes let the vegetables breathe while keeping them fresh for a few days."
+  }
+];
+
+export function examplesFor(structureId: string): FamiliarExample[] {
+  return FAMILIAR_EXAMPLES.filter((e) => e.structureIds.includes(structureId));
+}
+
+export const EXAMPLE_DISCLAIMER =
+  "Brands are named only to help you recognise a packaging format you can see in shops. PackWise has not verified their exact material layers or shelf life, and no brand endorses or is connected with PackWise. Their shelf life does not automatically apply to your food.";
