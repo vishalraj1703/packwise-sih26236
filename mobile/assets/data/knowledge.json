@@ -1,0 +1,396 @@
+{
+ "updated": "2026-09-30",
+ "articles": [
+  {
+   "id": "K1",
+   "title": "What OTR and WVTR mean",
+   "tags": [
+    "otr",
+    "wvtr",
+    "barrier",
+    "oxygen",
+    "moisture",
+    "permeability",
+    "datasheet"
+   ],
+   "text": "OTR (oxygen transmission rate) is how much oxygen passes through one square metre of packaging film in a day, usually in cc/m²·day at 23 °C and 0% RH (ASTM D3985). WVTR (water vapour transmission rate) is how much water vapour passes, in g/m²·day, usually at 38 °C and 90% RH (ASTM F1249). Lower numbers mean better protection. Always compare values measured at the same temperature, humidity and thickness — a value without test conditions cannot be compared. Temperature raises both rates; humidity raises the OTR of nylon, EVOH and cellulose films strongly.",
+   "sources": [
+    "ASTM-D3985",
+    "ASTM-F1249",
+    "POLYMER-HANDBOOK"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K2",
+   "title": "How PackWise works out the WVTR your food needs",
+   "tags": [
+    "wvtr",
+    "moisture",
+    "shelf life",
+    "calculation",
+    "isotherm",
+    "gap 1"
+   ],
+   "text": "For a dry food, PackWise uses the moisture-gain model: the food absorbs water until its moisture reaches the critical limit (for cashew kernels, 5% moisture in the UNECE standard). The speed depends on the pack's WVTR, the pack area, the food mass, the outside humidity and temperature, and how strongly the food attracts water (its sorption isotherm). The model is applied step by step over transit and storage. It finds the highest WVTR that still keeps moisture below the limit for your target days, then reports it at the standard 38 °C / 90% RH test condition so that you can compare it with supplier datasheets. Uncertain inputs are varied to give a typical (P50) and a cautious (P10) answer.",
+   "sources": [
+    "LABUZA",
+    "UNECE-DDP17"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K3",
+   "title": "Oxygen, rancidity and oxygen budgets",
+   "tags": [
+    "oxygen",
+    "rancid",
+    "nuts",
+    "cashew",
+    "otr",
+    "fat",
+    "oxidation"
+   ],
+   "text": "Foods rich in fat, like cashews, groundnuts and fried chips, become rancid when oxygen reacts with their oil. Textbooks give a tolerable oxygen gain for food classes (nuts and snacks roughly 5–15 mg of oxygen per kg of food over their life). PackWise adds up the oxygen left in the pack (headspace air) and the oxygen that passes through the film during transit and storage, and compares this with the tolerance. For storage longer than about a month, air left in a normal pouch already contains more oxygen than the tolerance, so barrier film alone is not enough — the air must be removed by nitrogen flushing or vacuum, or absorbed by an oxygen absorber sachet.",
+   "sources": [
+    "SALAME"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K4",
+   "title": "Nitrogen flushing, vacuum packing and oxygen absorbers",
+   "tags": [
+    "nitrogen",
+    "flush",
+    "vacuum",
+    "absorber",
+    "oxygen",
+    "sachet",
+    "equipment"
+   ],
+   "text": "Nitrogen flushing replaces air in the pack with nitrogen before sealing; a good process leaves about 1–2% oxygen, which should be checked with a headspace oxygen analyser. Vacuum packing removes most air, but sharp or hard pieces can puncture the film, so vacuum pouches usually contain a nylon layer. An oxygen absorber sachet (iron powder) placed in a high-barrier pouch soaks up the remaining oxygen and the oxygen that slowly enters; its capacity (in cc) must cover both. Absorbers only make sense with a high oxygen barrier film and a good seal. If you do not own a flushing or vacuum machine, a local packing service can do it per pack.",
+   "sources": [
+    "SALAME",
+    "SEED"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K5",
+   "title": "Modified atmosphere packaging (MAP) for fruits and vegetables",
+   "tags": [
+    "map",
+    "fresh",
+    "produce",
+    "respiration",
+    "tomato",
+    "mango",
+    "banana",
+    "spinach",
+    "oxygen",
+    "carbon dioxide"
+   ],
+   "text": "Fresh produce keeps breathing after harvest: it uses oxygen and gives off carbon dioxide. In a suitable film pack, oxygen falls and carbon dioxide rises until the gas passing through the film balances the produce's breathing. Moderately low oxygen and raised carbon dioxide slow ripening. Too little oxygen (usually below 1–2%) causes fermentation and bad smells; too much carbon dioxide can injure the produce. The right film depends on how fast the produce breathes, the pack size and — most importantly — the temperature. Warm transit makes produce breathe much faster than gas can pass through the film, which can make the pack anaerobic.",
+   "sources": [
+    "KADER",
+    "USDA-HB66"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K6",
+   "title": "How micro-perforations are sized",
+   "tags": [
+    "micro-perforation",
+    "perforation",
+    "holes",
+    "laser",
+    "map",
+    "gap 3"
+   ],
+   "text": "Most plastic films let too little oxygen through for fast-breathing produce. Tiny laser holes (typically 60–200 µm) add gas exchange. Each hole passes a predictable amount of gas by diffusion (PackWise uses the Fishman model with an end-correction). The number of holes is chosen so that total oxygen entry equals the produce's oxygen use at the target oxygen level and storage temperature. Because breathing rates vary, PackWise runs hundreds of simulations to report the chance of staying in the target window and the chance of going anaerobic, and gives a range of hole numbers. Always confirm the atmosphere in sample packs with a gas analyser.",
+   "sources": [
+    "FISHMAN",
+    "GUILLARD"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K7",
+   "title": "Temperature matters more than packaging for fresh produce",
+   "tags": [
+    "temperature",
+    "cold chain",
+    "reefer",
+    "chilling",
+    "fresh",
+    "q10"
+   ],
+   "text": "A rule of thumb for fresh produce is that every 10 °C rise makes it breathe about 2–3 times faster (its Q10), so it ages that much faster. Packaging cannot make up for heat. Some tropical produce (tomato, mango, banana) is damaged by cold below about 10–13 °C (chilling injury), so the coldest option is not always right. Leafy vegetables like spinach need 0–2 °C. PackWise estimates how much of the produce's storage life the journey and storage temperatures use up, and will tell you when no packaging can compensate.",
+   "sources": [
+    "USDA-HB66",
+    "KADER"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K8",
+   "title": "Getting a good heat seal",
+   "tags": [
+    "seal",
+    "sealing",
+    "impulse",
+    "band sealer",
+    "heat seal",
+    "leak",
+    "gap 4"
+   ],
+   "text": "Clean the seal area — powder, oil or food in the seal causes leaks. Set the sealer to the film's sealant range (LDPE about 110–150 °C, CPP about 140–180 °C) and adjust dwell time until the seal is clear and even without shrinking or burning. A good seal is continuous with no wrinkles or channels. Check sample packs: squeeze test or bubble test under water (ASTM F2096), and peel strength (ASTM F88) if a lab is available. Hand impulse sealers make narrow seals (2–5 mm); band sealers make wider, more consistent seals.",
+   "sources": [
+    "ASTM-F88",
+    "ASTM-F2096"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K9",
+   "title": "How many packs to check (sampling)",
+   "tags": [
+    "sampling",
+    "quality check",
+    "leak test",
+    "c=0",
+    "inspection"
+   ],
+   "text": "To be 95% confident that no more than 5% of packs are defective, check 59 packs and accept the lot only if none fails (a zero-acceptance plan). For smaller lots, check all packs if there are fewer than 59. For 99% confidence of no more than 1% defects you would need 459 packs, which is usually a supplier or lab task. PackWise shows the sample size for your number of packs.",
+   "sources": [
+    "ISO-2859"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K10",
+   "title": "Cartons, stacking and drops",
+   "tags": [
+    "carton",
+    "box",
+    "corrugated",
+    "stacking",
+    "compression",
+    "drop",
+    "ply",
+    "outer packaging"
+   ],
+   "text": "Corrugated boxes lose strength with humidity and time: at 80% RH they keep only about two-thirds of their dry strength, and long storage lowers it further. PackWise estimates box strength with the McKee formula and multiplies the stacking load by a safety factor for time, humidity, stacking pattern and handling, then picks 3-, 5- or 7-ply board. Keep boxes under about 20 kg for manual handling. Drop heights used in common transit tests depend on package weight (76 cm for light packages). Stack boxes column-aligned; interlocking the pattern weakens stacks.",
+   "sources": [
+    "MCKEE",
+    "ISTA-1A"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K11",
+   "title": "Crates and ventilation for produce",
+   "tags": [
+    "crate",
+    "ventilation",
+    "produce",
+    "bruising",
+    "stacking"
+   ],
+   "text": "Ventilated plastic crates protect produce from crushing and let heat and gases escape. Do not overfill — the lid or the next crate must not press on the fruit. Keep ventilation openings clear; do not wrap crates with plastic sheets during transit. Pre-cool produce early in the morning and load quickly. Keep ethylene-producing fruits (mango, banana, tomato) away from sensitive produce.",
+   "sources": [
+    "KADER"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K12",
+   "title": "Measuring moisture and water activity",
+   "tags": [
+    "moisture",
+    "measure",
+    "water activity",
+    "aw",
+    "oven",
+    "meter",
+    "test"
+   ],
+   "text": "Moisture content is measured by weighing a sample, drying it in an oven under a set method, and weighing again; calibrated grain/nut moisture meters are quicker but need checking. Water activity (aw) needs a water activity meter, usually at a food lab. A photograph cannot tell moisture or water activity. If your moisture is measured, enter it as 'measured' with the date — PackWise will narrow its estimates.",
+   "sources": [
+    "SEED"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K13",
+   "title": "Measuring pH and why it matters",
+   "tags": [
+    "ph",
+    "pickle",
+    "acid",
+    "measure",
+    "safety"
+   ],
+   "text": "For pickles, chutneys and sauces, acidity decides which microbes can grow. pH 4.6 is a widely used boundary: foods above it need a validated preservation process. Use a calibrated pH meter on a blended sample; pH paper is not accurate enough. PackWise will not recommend packaging for such foods until pH and other critical values are provided.",
+   "sources": [
+    "FDA-114"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K14",
+   "title": "Measuring the breathing rate of produce (closed-jar test)",
+   "tags": [
+    "respiration",
+    "measure",
+    "jar",
+    "produce",
+    "test",
+    "co2"
+   ],
+   "text": "Put a known mass of produce in an airtight jar of known volume at the storage temperature. Measure oxygen and carbon dioxide with a headspace analyser at the start and after a few hours (before oxygen falls below about 15%). The change in gas per kg per hour is the respiration rate. A measured rate narrows the micro-perforation range considerably.",
+   "sources": [
+    "USDA-HB66"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K15",
+   "title": "Recycling, compostable and multilayer packs in India",
+   "tags": [
+    "recycle",
+    "recyclable",
+    "sustainable",
+    "compostable",
+    "epr",
+    "multilayer",
+    "disposal",
+    "pwm"
+   ],
+   "text": "India's Plastic Waste Management Rules group plastic packaging into Category I (rigid), II (flexible, single or multi-layer plastics), III (multi-layered with at least one non-plastic layer, e.g. foil or paper) and IV (compostable). Mono-material PE or PP pouches are recyclable where flexible plastic is collected. Foil and paper laminates are hard to recycle. Compostable films only break down in suitable (usually industrial) composting; do not call them biodegradable in general. PackWise shows recyclability and an indicative material footprint only after a pack is technically suitable.",
+   "sources": [
+    "PWM-2022"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K16",
+   "title": "Reading a supplier datasheet",
+   "tags": [
+    "supplier",
+    "datasheet",
+    "specification",
+    "buy",
+    "purchase",
+    "test report"
+   ],
+   "text": "Check: the material structure and thickness of each layer; OTR and WVTR with test method, temperature and humidity; the date of the test and who tested it (a third-party lab report is stronger than a supplier declaration); pouch size, closure (zip) and sealant type; food-contact compliance; minimum order quantity, setup/printing charges, lead time and substitution terms. When material arrives, check the lot number, dimensions and a few sample seals — appearance alone cannot prove barrier performance.",
+   "sources": [
+    "POLYMER-HANDBOOK"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K17",
+   "title": "Why a small trial matters",
+   "tags": [
+    "trial",
+    "verify",
+    "validation",
+    "shelf life",
+    "claim",
+    "gap 5"
+   ],
+   "text": "A recommendation is a prediction. Before claiming a benefit, pack a small batch in your current packaging and in the recommended packaging, keep them under the same conditions, and measure the agreed quality checks (moisture, rancidity, weight loss, damage, saleable quantity). Decide the pass/fail thresholds before you start and lock them — PackWise records a fingerprint of the plan so thresholds cannot be quietly changed afterwards. One successful trial supports a claim only for those conditions; it does not prove a universal shelf life.",
+   "sources": [
+    "SEED"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K18",
+   "title": "QR codes, barcodes and batch records",
+   "tags": [
+    "qr",
+    "barcode",
+    "traceability",
+    "batch",
+    "scan",
+    "gs1"
+   ],
+   "text": "PackWise creates a QR code when you record a packed batch and confirm the actual material lot used. Scanning it opens the batch record; scanning never changes shipment status — only signed-in transporters, buyers and retailers can add dispatch, handoff and receipt events. A normal product barcode (GTIN) identifies the product type, not the batch; to know which batch was sold, the shop's billing system must also record the batch or unit code.",
+   "sources": [
+    "GS1-EPCIS"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K19",
+   "title": "Food-contact safety of packaging",
+   "tags": [
+    "food contact",
+    "migration",
+    "safety",
+    "fssai",
+    "compliance"
+   ],
+   "text": "Packaging that touches food must be food-grade and suitable for the type of food (dry, fatty, acidic, hot). Ask the supplier for a declaration of compliance with the applicable Indian standards and FSSAI packaging regulations, including migration testing for oily or acidic foods. Recycled plastic should not be used in direct food contact unless specifically permitted.",
+   "sources": [
+    "SEED"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K20",
+   "title": "Insects and hermetic storage of grains and nuts",
+   "tags": [
+    "insects",
+    "hermetic",
+    "grain",
+    "rice",
+    "storage",
+    "pests"
+   ],
+   "text": "Sealed, airtight (hermetic) bags stop new insects from entering and starve existing insects of oxygen over time. Tie-closures and stitched sacks without a sealed liner are not hermetic. Keep bags off the floor on pallets and away from walls, and check regularly.",
+   "sources": [
+    "SEED"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K21",
+   "title": "Light and colour loss",
+   "tags": [
+    "light",
+    "colour",
+    "turmeric",
+    "opaque",
+    "metallised"
+   ],
+   "text": "Light speeds up rancidity in oils and fades natural colours such as curcumin in turmeric. Opaque, metallised or foil packs block light; clear packs should be kept in closed cartons and away from sunlight and bright shop lights.",
+   "sources": [
+    "SEED"
+   ],
+   "review": "draft"
+  },
+  {
+   "id": "K22",
+   "title": "Understanding the cost comparison",
+   "tags": [
+    "cost",
+    "price",
+    "moq",
+    "minimum order",
+    "budget",
+    "quotation"
+   ],
+   "text": "PackWise adds material, printing/setup, consumables (nitrogen, absorbers, perforation), labour, packing-service charges, cartons or crates, delivery and applicable taxes, and shows cost per kg of food. A cheaper film can cost more overall because of minimum order quantities and setup charges — sometimes one standard pouch for the whole order is cheaper than two different pouches. Each line shows whether it is a quotation or an estimate. In this prototype, supplier prices are simulated.",
+   "sources": [
+    "SIM"
+   ],
+   "review": "draft"
+  }
+ ]
+}

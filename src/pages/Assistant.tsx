@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { offlineAnswer } from "../../shared/engine/retrieval";
 import { LIBRARY_UPDATED } from "../../shared/data/knowledge";
-import { api, local } from "../lib/api";
+import { api } from "../lib/api";
+import { idb } from "../lib/idb";
 import { useI18n } from "../lib/i18n";
 import { Card, Notice } from "../components/ui";
 
@@ -20,8 +21,8 @@ export default function Assistant() {
   const end = useRef<HTMLDivElement>(null);
   useEffect(() => { api<{ ai: boolean }>("/status").then((s) => setAi(s.ai)).catch(() => setAi(false)); }, []);
   useEffect(() => { end.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs]);
-  const context = () => {
-    const l = local.get<any>("packwise-local-result", null);
+  const context = async () => {
+    const l = await idb.get<any>("local-result", null);
     if (!l || !useContext) return "";
     const r = l.result;
     return `Food: ${r.commodity.name}. Journey ${r.input.journey.origin.name} to ${r.input.journey.destination.name}. ` + r.plans.map((p: any) => `${p.tags.join("/")}: total ₹${Math.round(p.cost.totalInr)}; ${p.whatItCommunicates}`).join(" ") + " " +
@@ -35,7 +36,7 @@ export default function Assistant() {
     setBusy(true);
     try {
       if (mode === "auto" && ai && navigator.onLine) {
-        const r = await api<{ answer: string; passages: any[] }>("/ai/chat", { json: { question: text, history, context: context(), language: langName } });
+        const r = await api<{ answer: string; passages: any[] }>("/ai/chat", { json: { question: text, history, context: await context(), language: langName } });
         setMsgs((m) => [...m, { role: "assistant", content: r.answer, mode: "online", passages: r.passages }]);
       } else throw new Error("offline");
     } catch {

@@ -3,5 +3,11 @@ dist
 data
 uploads
 scratch
+mobile
 .env
 .claude
+.git
+**/__pycache__
+**/.pytest_cache
+test-results
+playwright-report

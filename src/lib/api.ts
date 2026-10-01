@@ -1,3 +1,4 @@
+import { idb } from "./idb";
 // Fetch helper with an offline outbox: writes made while offline are queued
 // locally and sent when connectivity returns (explicit, user-visible sync).
 
@@ -25,30 +26,31 @@ export async function api<T = any>(path: string, opts: RequestInit & { json?: un
 }
 
 export interface OutboxItem { id: string; path: string; body: unknown; label: string; createdAt: string }
-const KEY = "packwise-outbox";
+const KEY = "outbox";
 
-function read(): OutboxItem[] {
-  try { return JSON.parse(localStorage.getItem(KEY) ?? "[]"); } catch { return []; }
+async function read(): Promise<OutboxItem[]> {
+  return idb.get<OutboxItem[]>(KEY, []);
 }
-function write(items: OutboxItem[]) {
-  try { localStorage.setItem(KEY, JSON.stringify(items)); } catch { /* storage unavailable */ }
+async function write(items: OutboxItem[]) {
+  await idb.set(KEY, items);
   window.dispatchEvent(new Event("outbox-changed"));
 }
 
+/** Records made offline (batch records, shipment events) are queued in IndexedDB and sent when connected. */
 export const outbox = {
   list: read,
-  add(path: string, body: unknown, label: string) {
-    write([...read(), { id: crypto.randomUUID(), path, body, label, createdAt: new Date().toISOString() }]);
+  async add(path: string, body: unknown, label: string) {
+    await write([...(await read()), { id: crypto.randomUUID(), path, body, label, createdAt: new Date().toISOString() }]);
   },
-  remove(id: string) { write(read().filter((x) => x.id !== id)); },
+  async remove(id: string) { await write((await read()).filter((x) => x.id !== id)); },
   async sync(): Promise<{ sent: number; failed: string[] }> {
-    const items = read();
+    const items = await read();
     let sent = 0;
     const failed: string[] = [];
     for (const it of items) {
       try {
         await api(it.path, { json: it.body });
-        outbox.remove(it.id);
+        await outbox.remove(it.id);
         sent++;
       } catch (e) {
         failed.push(`${it.label}: ${(e as Error).message}`);

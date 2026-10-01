@@ -8,6 +8,7 @@ import { compact } from "../../shared/engine/reassess";
 import { EQUIPMENT } from "../../shared/engine/sealing";
 import type { Evidenced, SealMethod } from "../../shared/types";
 import { api, local } from "../lib/api";
+import { idb } from "../lib/idb";
 import { useAuth } from "../lib/auth";
 import { foodImage } from "../lib/images";
 import { useI18n } from "../lib/i18n";
@@ -87,14 +88,15 @@ export default function Assess() {
         const r = await api<{ id: number }>("/assessments", { json: { input } });
         nav(`/results/${r.id}`);
       } else {
-        const result = compact(recommend(input));
-        local.set("packwise-local-result", { input, result, createdAt: new Date().toISOString() });
+        // not signed in: the Python engine on the server computes, nothing is stored server-side
+        const result = await api<ReturnType<typeof compact>>("/assessments/compute", { json: input });
+        await idb.set("local-result", { input, result, createdAt: new Date().toISOString() });
         nav("/results/local");
       }
     } catch (e) {
       // offline or server error: compute on this device
       const result = compact(recommend(input));
-      local.set("packwise-local-result", { input, result, createdAt: new Date().toISOString() });
+      await idb.set("local-result", { input, result, createdAt: new Date().toISOString() });
       nav("/results/local");
     } finally { setBusy(false); }
   };

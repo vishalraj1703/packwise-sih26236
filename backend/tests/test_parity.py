@@ -59,7 +59,7 @@ def test_engines_agree(case, ts_results):
         assert p["standaloneInr"] == pytest.approx(t["standaloneInr"], rel=1e-6), k
         if t.get("moisture"):
             for f in ("daysP10", "daysP50", "requiredWvtrP50"):
-                if t["moisture"][f] < 1e5:
+                if t["moisture"][f] is not None and t["moisture"][f] < 1e5:
                     assert p["moisture"][f] == pytest.approx(t["moisture"][f], rel=0.01), (k, f)
         if t.get("map"):
             assert p["map"]["holes"] == t["map"]["holes"], k

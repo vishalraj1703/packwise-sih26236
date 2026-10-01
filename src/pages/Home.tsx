@@ -35,14 +35,15 @@ export default function Home() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link to="/assess" className="btn-accent">{t("home.start")} →</Link>
             <Link to="/assess?example=cashew" className="btn border border-white/30 text-white hover:bg-white/10">{t("home.worked")}</Link>
+            <a href="/downloads/packwise-arm64.apk" download className="btn border border-white/30 text-white hover:bg-white/10">Android app (APK)</a>
           </div>
           {!user && <p className="mt-4 text-xs text-white/70">Works without signing in and offline. Sign in to save assessments, create batch QR codes and trace shipments.</p>}
         </div>
         <div className="grid grid-cols-3 gap-3 rounded-2xl bg-white/10 p-4">
-          {(["stand-up-pouch", "vacuum-pack", "tin", "sack-liner", "crate", "jar"] as const).map((f) => (
+          {(["stand-up-pouch", "pillow-pouch", "vacuum-pack", "tin", "sack-liner", "jar"] as const).map((f) => (
             <div key={f} className="flex flex-col items-center rounded-xl bg-white p-2">
               <PackIllustration format={f} className="h-16 w-16" />
-              <span className="text-[11px] font-medium text-ink-2">{f.replace("-", " ")}</span>
+              <span className="text-[11px] font-medium text-ink-2">{f.replaceAll("-", " ")}</span>
             </div>
           ))}
         </div>

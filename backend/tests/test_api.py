@@ -14,9 +14,18 @@ INPUT = {"commodityId": "cashew-kernel", "state": "unroasted", "identification":
          "properties": {"initialMoistureWb": {"value": 4.2, "lo": 3.9, "hi": 4.5, "unit": "% w.b.", "status": "measured"}}, "equipment": ["heat-impulse"], "journey": JOURNEY, "userState": "Tamil Nadu"}
 
 
+_started = TestClient(app)
+_started.__enter__()  # run startup (database creation + demo seed) once for this module
+
+
+@pytest.fixture(scope="module", autouse=True)
+def _shutdown():
+    yield
+    _started.__exit__(None, None, None)
+
+
 def client(role: str | None = None) -> TestClient:
     c = TestClient(app)
-    c.__enter__()  # runs startup (seeding)
     if role:
         r = c.post("/api/auth/login", json={"email": f"{role}@demo.packwise", "password": PW})
         assert r.status_code == 200, r.text
@@ -105,7 +114,7 @@ def test_full_traceability_flow(producer):
     inv = producer.get(f'/api/investigate/lot/{lot["id"]}').json()
     assert inv["batches"][0]["id"] == b["id"]
     detail = producer.get(f'/api/batches/{b["id"]}').json()
-    assert len(detail["sales"]) == 2 and detail["complaints"][0]["photos_json"]
+    assert len(detail["sales"]) == 3 and detail["complaints"][0]["photos_json"]
     photo = detail["complaints"][0]
     import json
     assert producer.get(json.loads(photo["photos_json"])[0]).status_code == 200

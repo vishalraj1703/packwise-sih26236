@@ -1,9 +1,15 @@
 import type { PackFormat } from "../../shared/types";
+import { packCredit, packImage } from "../lib/images";
 
 const S = { stroke: "#0b2f30", strokeWidth: 3, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
 
-/** Packaging-format pictograms (generic formats — never brands). */
-export function PackIllustration({ format, opaque = false, className = "h-20 w-20" }: { format: PackFormat; opaque?: boolean; className?: string }) {
+/** Packaging format picture: a credited real photo when one exists, otherwise a generic pictogram. */
+export function PackIllustration({ format, opaque = false, className = "h-20 w-20", drawing = false }: { format: PackFormat; opaque?: boolean; className?: string; drawing?: boolean }) {
+  const photo = drawing ? null : packImage(format);
+  if (photo) {
+    const c = packCredit(format)!;
+    return <img src={photo} alt={c.caption ?? format} title={`${c.caption ?? format} — photo: ${c.author}, ${c.license} (Wikimedia Commons)`} loading="lazy" className={`${className} rounded-lg object-cover`} />;
+  }
   const fill = opaque ? "#c9d3d8" : "#e3efee";
   const body = (() => {
     switch (format) {

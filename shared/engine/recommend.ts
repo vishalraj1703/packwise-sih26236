@@ -17,7 +17,7 @@ import { transportOptions, transitSegments, storageSegment, type JourneyAnalysis
 import { aggregateOrderCost, standaloneCost, DEFAULT_COST_SETTINGS, type CostItem, type CostSettings } from "./cost";
 import { rng, triangular, summarize, wbToDb, sig } from "./physics";
 
-export const ENGINE_VERSION = "packwise-engine 1.0.0 (2026-09-30)";
+export const ENGINE_VERSION = "packwise-engine 2.0.0 (TypeScript offline copy, 2026-10-01)";
 export const DELAY_SCENARIO = { extraHours: 48, extraC: 4 };
 /**
  * Oxidation-duration assumption (open parameter of Gap 1, pending expert review):

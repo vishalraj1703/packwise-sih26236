@@ -5,7 +5,8 @@ import { tagLabel } from "../../shared/engine/recommend";
 import type { ReassessChange } from "../../shared/engine/reassess";
 import { getCommodity } from "../../shared/data/commodities";
 import { EQUIPMENT } from "../../shared/engine/sealing";
-import { api, local } from "../lib/api";
+import { api } from "../lib/api";
+import { idb } from "../lib/idb";
 import { useAuth } from "../lib/auth";
 import { foodImage } from "../lib/images";
 import { useI18n } from "../lib/i18n";
@@ -26,9 +27,10 @@ export default function Results() {
   useEffect(() => {
     setData(null); setErr(null);
     if (id === "local") {
-      const l = local.get<any>("packwise-local-result", null);
-      if (!l) setErr("No result on this device. Run an assessment first.");
-      else setData({ id: "local", title: `${l.result.commodity.name} (computed on this device)`, input: l.input, result: l.result });
+      idb.get<any>("local-result", null).then((l) => {
+        if (!l) setErr("No result on this device. Run an assessment first.");
+        else setData({ id: "local", title: `${l.result.commodity.name} (computed on this device)`, input: l.input, result: l.result });
+      });
     } else {
       api<Loaded>(`/assessments/${id}`).then(setData).catch((e) => setErr(e.message));
     }
@@ -38,6 +40,7 @@ export default function Results() {
   return <ResultsView data={data} setData={setData} />;
 }
 
+const isNum = (x: unknown): x is number => typeof x === "number" && Number.isFinite(x);
 const OXY: Record<string, string> = { "gas-flush": "nitrogen flushing", vacuum: "vacuum", absorber: "oxygen-absorber sachet", none: "" };
 const candOf = (r: Recommendation, key: string) => r.portions.flatMap((p) => p.candidates).find((c) => c.key === key)!;
 
@@ -189,12 +192,12 @@ function WhyPanel({ c, r }: { c: Candidate; r: Recommendation }) {
       <RealLifeExamples structureId={c.structureId} commodityId={r.commodity.id} />
       <p className="text-sm">{c.explanation}</p>
       <div className="grid gap-2 sm:grid-cols-2">
-        {c.moisture && !Number.isNaN(c.moisture.providedWvtr) && (
+        {c.moisture && isNum(c.moisture.providedWvtr) && (
           <div className="rounded-xl border border-line p-2 text-sm"><div className="label">Required vs documented — WVTR</div>
             Required ≤ <strong>{c.moisture.requiredWvtrP50 >= 1e5 ? "any" : sig(c.moisture.requiredWvtrP50)}</strong> (cautious {sig(c.moisture.requiredWvtrStrict)}) · this pack <strong>{sig(c.moisture.providedWvtr)}</strong> g/m²·day
             <div className="text-xs text-ink-3">Pack value from {c.moisture.providedBasis}</div></div>
         )}
-        {c.oxygen && !Number.isNaN(c.oxygen.providedOtr) && (
+        {c.oxygen && isNum(c.oxygen.providedOtr) && (
           <div className="rounded-xl border border-line p-2 text-sm"><div className="label">Required vs documented — OTR</div>
             Full-budget requirement ≤ <strong>{sig(c.oxygen.requiredOtr)}</strong> · this pack <strong>{sig(c.oxygen.providedOtr)}</strong> cc/m²·day{c.oxygen.note && <div className="text-xs text-ink-3">{c.oxygen.note}</div>}</div>
         )}

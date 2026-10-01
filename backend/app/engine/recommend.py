@@ -182,7 +182,24 @@ def _moisture_days_mc(mi, mc, a, b, fvar, area, fill_kg, profile, h2o_by_seg, ga
     return crit
 
 
+def json_safe(o):
+    """NaN/Infinity → None (as JavaScript's JSON.stringify does); NumPy scalars → Python numbers."""
+    if isinstance(o, dict):
+        return {k: json_safe(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [json_safe(v) for v in o]
+    if isinstance(o, np.generic):
+        o = o.item()
+    if isinstance(o, float) and not math.isfinite(o):
+        return None
+    return o
+
+
 def recommend(inp: dict) -> dict:
+    return json_safe(_recommend(inp))
+
+
+def _recommend(inp: dict) -> dict:
     c = ref.get_commodity(inp["commodityId"])
     settings = {**DEFAULT_COST_SETTINGS, **(inp.get("costSettings") or {})}
     total_kg = sum(p["kg"] for p in inp["portions"])

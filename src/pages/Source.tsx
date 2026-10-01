@@ -58,8 +58,8 @@ function SourceCard({ c, label, assessmentId }: { c: Candidate; label: string; a
             <ul className="space-y-1">
               <li><strong>Structure:</strong> {c.layersText}</li>
               <li><strong>Fill:</strong> {kg(c.packSizeKg)} per pack · flat size ≈ {c.geometry.flatWidthCm.toFixed(0)} × {c.geometry.flatLengthCm.toFixed(0)} cm {s.zipper ? "· zip closure" : ""}</li>
-              {c.moisture && <li><strong>WVTR (38 °C/90% RH, ASTM F1249):</strong> ≤ {sig(Math.min(c.moisture.requiredWvtrP50, 1e5))} g/m²·day required{!Number.isNaN(at.wvtr) && <> — generic value for this structure {sig(at.wvtr)}</>}</li>}
-              {c.oxygen && c.moisture && c.moisture.targetDays > 30 && <li><strong>OTR (23 °C/0% RH, ASTM D3985):</strong> ≤ {sig(c.oxygen.requiredOtr)} cc/m²·day{!Number.isNaN(at.otr) && <> — generic {sig(at.otr)}</>}</li>}
+              {c.moisture && <li><strong>WVTR (38 °C/90% RH, ASTM F1249):</strong> ≤ {sig(Math.min(c.moisture.requiredWvtrP50, 1e5))} g/m²·day required{Number.isFinite(at.wvtr) && <> — generic value for this structure {sig(at.wvtr)}</>}</li>}
+              {c.oxygen && c.moisture && c.moisture.targetDays > 30 && <li><strong>OTR (23 °C/0% RH, ASTM D3985):</strong> ≤ {sig(c.oxygen.requiredOtr)} cc/m²·day{Number.isFinite(at.otr) && <> — generic {sig(at.otr)}</>}</li>}
               {c.seal?.sealTempC && <li><strong>Sealant:</strong> heat-seal range {c.seal.sealTempC[0]}–{c.seal.sealTempC[1]} °C compatible with your {c.seal.method.replace(/-/g, " ")}</li>}
               {c.map?.feasible && <li><strong>Micro-perforation:</strong> {c.map.holes} holes × {c.map.holeDiameterUm} µm per pack (laser)</li>}
               {c.oxygen?.absorberCc && <li><strong>Oxygen absorber:</strong> {c.oxygen.absorberCc} cc sachets × {c.units}</li>}

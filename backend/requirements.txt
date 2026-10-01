@@ -6,7 +6,8 @@ psycopg[binary]>=3.2
 numpy>=1.26
 scipy>=1.13
 scikit-learn>=1.5
-xgboost>=2.0
+xgboost-cpu>=3.0; sys_platform == "linux"
+xgboost>=3.0; sys_platform != "linux"
 httpx>=0.25
 python-multipart>=0.0.9
 qrcode[pil]>=7.4

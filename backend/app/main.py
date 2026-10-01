@@ -7,6 +7,7 @@ built web dashboard.
 from __future__ import annotations
 
 import mimetypes
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
@@ -21,7 +22,13 @@ from .db import Batch, SessionLocal
 from .routers import core, trace, trials
 from .seed import seed_if_empty
 
-app = FastAPI(title="PackWise API", version="2.0.0", description="Evidence-backed food packaging advisor — SIH Problem Statement 26236")
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    seed_if_empty()
+    yield
+
+
+app = FastAPI(lifespan=lifespan, title="PackWise API", version="2.0.0", description="Evidence-backed food packaging advisor — SIH Problem Statement 26236")
 
 
 @app.exception_handler(RequestValidationError)
@@ -82,12 +89,9 @@ if (WEB_DIST / "index.html").exists():
     def spa(path: str):
         f = (WEB_DIST / path).resolve()
         if path and f.is_file() and WEB_DIST.resolve() in f.parents:
+            if f.suffix == ".apk":  # Android app download
+                return FileResponse(f, media_type="application/vnd.android.package-archive", filename=f.name)
             media = mimetypes.guess_type(f.name)[0]
             headers = {"Cache-Control": "public, max-age=31536000, immutable"} if "/assets/" in f.as_posix() else {}
             return FileResponse(f, media_type=media, headers=headers)
         return FileResponse(WEB_DIST / "index.html", headers={"Cache-Control": "no-cache"})
-
-
-@app.on_event("startup")
-def _startup():
-    seed_if_empty()

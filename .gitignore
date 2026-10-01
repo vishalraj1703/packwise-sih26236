@@ -10,3 +10,8 @@ scratch
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# Android APKs are deployed with the site but not committed
+/public/downloads/
+/test-results/
+/playwright-report/

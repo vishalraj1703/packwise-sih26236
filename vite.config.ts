@@ -24,7 +24,7 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: "/index.html",
-        navigateFallbackDenylist: [/^\/api\//],
+        navigateFallbackDenylist: [/^\/api\//, /^\/downloads\//, /^\/uploads\//, /^\/01\//],
         globPatterns: ["**/*.{js,css,html,svg,png,woff2}"],
         runtimeCaching: [
           {
@@ -40,7 +40,7 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: Object.fromEntries(["/api", "/uploads", "/01"].map((k) => [k, {
-      target: "http://localhost:8787",
+      target: "http://127.0.0.1:8787",
       configure: (proxy: any) => proxy.on("proxyReq", (proxyReq: any, req: any) => proxyReq.setHeader("x-forwarded-host", req.headers.host))
     }]))
   },

@@ -16,12 +16,15 @@ function useOnline() {
 }
 
 function OutboxBar({ online }: { online: boolean }) {
-  const [items, setItems] = useState(outbox.list());
+  const [items, setItems] = useState<Awaited<ReturnType<typeof outbox.list>>>([]);
   const [msg, setMsg] = useState<string | null>(null);
   useEffect(() => {
-    const f = () => setItems(outbox.list());
+    const f = () => { outbox.list().then(setItems); };
+    f();
     window.addEventListener("outbox-changed", f);
-    return () => window.removeEventListener("outbox-changed", f);
+    const onOnline = () => { outbox.sync().then((r) => r.sent && setMsg(`Sent ${r.sent} record(s) saved offline.`)); };
+    window.addEventListener("online", onOnline);
+    return () => { window.removeEventListener("outbox-changed", f); window.removeEventListener("online", onOnline); };
   }, []);
   if (!items.length && !msg) return null;
   return (
