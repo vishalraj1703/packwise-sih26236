@@ -10,3 +10,7 @@
 /playwright-report
 __pycache__
 .pytest_cache
+
+# APKs are git-ignored but must ship with the site
+!/public/downloads/
+!/public/downloads/*.apk
